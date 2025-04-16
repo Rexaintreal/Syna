@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Syna</title>
+    <!-- Favicon Links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='assets/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='assets/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='assets/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='assets/site.webmanifest') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'syna': {
+                            'accent': '#1d419d',    
+                            'dark': '#121212',      
+                            'gray': '#212121',      
+                            'medium': '#535353',    
+                            'light': '#b3b3b3'      
+                        }
+                    },
+                },
+                fontFamily: {
+                    'montserrat': ['Montserrat', 'sans-serif'],
+                    'poppins': ['Poppins', 'sans-serif'],
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-syna-dark min-h-screen flex flex-col">
+    <!-- Top Navigation -->
+    <div class="sticky top-0 bg-syna-dark z-10 shadow-lg px-4 py-2">
+        <div class="flex items-center gap-3">
+            <a href="{{ url_for('settings') }}" class="p-1.5 hover:bg-syna-gray rounded-full transition-colors">
+                <svg class="w-5 h-5 text-syna-light hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <h1 class="flex-1 text-white font-montserrat text-lg">Privacy Policy</h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 px-4 py-6 pb-20">
+        <div class="max-w-2xl mx-auto space-y-6">
+            <!-- Header -->
+            <div class="bg-syna-gray rounded-xl p-6">
+                <h2 class="text-xl font-montserrat text-white mb-2">Privacy Policy</h2>
+                <p class="text-syna-light text-sm">Last updated: 2025-04-15</p>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="space-y-6">
+                <!-- Introduction -->
+                <div class="bg-syna-gray rounded-xl p-6">
+                    <h3 class="text-lg font-montserrat text-white mb-3">1. Introduction</h3>
+                    <p class="text-syna-light text-sm leading-relaxed">
+                        Welcome to Syna. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we handle your personal information when you use our service.
+                    </p>
+                </div>
+
+                <!-- Information We Collect -->
+                <div class="bg-syna-gray rounded-xl p-6">
+                    <h3 class="text-lg font-montserrat text-white mb-3">2. Information We Collect</h3>
+                    <ul class="text-syna-light text-sm space-y-2">
+                        <li>• Spotify account information (username, email)</li>
+                        <li>• Instagram username</li>
+                        <li>• Music preferences and listening history</li>
+                        <li>• Device information and usage data</li>
+                    </ul>
+                </div>
+
+                <!-- How We Use Your Information -->
+                <div class="bg-syna-gray rounded-xl p-6">
+                    <h3 class="text-lg font-montserrat text-white mb-3">3. How We Use Your Information</h3>
+                    <ul class="text-syna-light text-sm space-y-2">
+                        <li>• To provide and maintain our service</li>
+                        <li>• To match you with other users based on music taste</li>
+                        <li>• To improve and personalize your experience</li>
+                        <li>• To communicate with you about updates</li>
+                    </ul>
+                </div>
+
+                <!-- Data Protection -->
+                <div class="bg-syna-gray rounded-xl p-6">
+                    <h3 class="text-lg font-montserrat text-white mb-3">4. Data Protection</h3>
+                    <p class="text-syna-light text-sm leading-relaxed">
+                        We implement appropriate security measures to protect your personal information. Your data is encrypted and stored securely.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup - Syna</title>
+    <!-- Favicon Links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='assets/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='assets/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='assets/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='assets/site.webmanifest') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'syna': {
+                            'accent': '#1d419d',    // Bluish Accent
+                            'dark': '#121212',      // Black
+                            'gray': '#212121',      // Dark Gray
+                            'medium': '#535353',    // Medium Gray
+                            'light': '#b3b3b3'      // Light Gray
+                        }
+                    },
+                },
+                fontFamily: {
+                    'montserrat': ['Montserrat', 'sans-serif'],
+                    'poppins': ['Poppins', 'sans-serif'],
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-syna-dark min-h-screen flex flex-col">
+     <!-- Spacer -->
+    <div class="flex-1"></div>
+    <div class="container mx-auto px-6 py-6 flex-1 flex flex-col">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="flex justify-center mb-6">
+                <img src="../static/assets/logo.png" alt="Syna Logo" class="rounded-lg h-20 w-auto">
+            </div>
+            <h1 class="font-montserrat text-white text-2xl mb-2">Almost there!</h1>
+            <p class="font-poppins text-syna-light text-sm">Let's set up your profile</p>
+        </div>
+
+        <!-- Setup Form -->
+        <div class="bg-syna-gray rounded-2xl p-6 shadow-lg mb-8">
+            <!-- Data Usage Information -->
+            <div class="mb-8">
+                <h2 class="font-montserrat text-white text-lg mb-4">How we use your data</h2>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="mt-1 text-syna-accent">
+                            <!-- Percentage Icon -->
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M4.5 15a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0-6a2.5 2.5 0 110 5 2.5 2.5 0 010-5zm11 6a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0-6a2.5 2.5 0 110 5 2.5 2.5 0 010-5zm-11-6a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0-6a2.5 2.5 0 110 5 2.5 2.5 0 010-5zm11 6a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0-6a2.5 2.5 0 110 5 2.5 2.5 0 010-5z"/>
+                            </svg>
+                        </div>
+                        <p class="text-syna-light text-sm">Your Spotify listening data is used only to calculate match percentages with other users</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="mt-1 text-syna-accent">
+                            <!-- Lock Icon -->
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <p class="text-syna-light text-sm">We never share your data with third parties or use it for advertising</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instagram Username Input -->
+            <form method="POST" action="{{ url_for('setup') }}" class="space-y-6">
+                <div>
+                    <label for="instagram" class="block font-poppins text-white text-sm mb-2">Instagram Username</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-3 flex items-center text-syna-light">@</span>
+                        <input 
+                            type="text" 
+                            id="instagram" 
+                            name="instagram" 
+                            class="w-full bg-syna-dark text-white pl-8 pr-4 py-3 rounded-lg font-poppins text-sm focus:outline-none focus:ring-2 focus:ring-syna-accent"
+                            placeholder="yourusername"
+                            required
+                            pattern="^[a-zA-Z0-9._]{1,30}$"
+                            title="Please enter a valid Instagram username"
+                            value=""
+                        >
+                    </div>
+                    <p class="mt-2 text-xs text-syna-light">This helps other users connect with you</p>
+                </div>
+
+
+                <!-- Continue Button -->
+                <button 
+                    type="submit" 
+                    class="w-full bg-syna-accent hover:bg-opacity-90 active:bg-opacity-80 text-white font-poppins font-semibold py-4 px-6 rounded-full transition duration-300 shadow-lg">
+                    
+                    Continue
+                </button>
+            </form>
+        </div>
+
+      
+    </div>
+</body>
+</html>

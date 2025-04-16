@@ -1,0 +1,47 @@
+# Web Framework and Extensions
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# HTTP Requests
+requests==2.31.0
+urllib3==2.0.4
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# Date/Time Handling
+pytz==2023.3
+
+# Database
+SQLite3==3.42.0      # Usually comes with Python, might not need explicit installation
+
+# Testing (Optional but recommended)
+pytest==7.4.0
+pytest-cov==4.1.0
+
+# Development Tools (Optional)
+black==23.7.0        # Code formatting
+flake8==6.1.0        # Code linting
+mypy==1.5.1          # Type checking
+
+# Security
+flask-talisman==1.1.0  # Security headers
+flask-seasurf==1.1.1   # CSRF protection
+
+# Production Server (Recommended for deployment)
+gunicorn==21.2.0
+
+# Caching (Optional but recommended)
+Flask-Caching==2.0.2
+
+# Rate Limiting (Optional but recommended)
+Flask-Limiter==3.5.0
+
+# Session Management
+Flask-Session==0.5.0
+
+# JSON Web Tokens (if needed)
+PyJWT==2.8.0
+
+# Logging
+structlog==23.1.0

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Favicon Links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='assets/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='assets/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='assets/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='assets/site.webmanifest') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
+    <title>Feedback - Syna</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'syna': {
+                            'accent': '#1d419d',    
+                            'dark': '#121212',      
+                            'gray': '#212121',      
+                            'medium': '#535353',    
+                            'light': '#b3b3b3'      
+                        }
+                    },
+                },
+                fontFamily: {
+                    'montserrat': ['Montserrat', 'sans-serif'],
+                    'poppins': ['Poppins', 'sans-serif'],
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-syna-dark min-h-screen flex flex-col">
+    <!-- Top Navigation -->
+    <div class="sticky top-0 bg-syna-dark z-10 shadow-lg px-4 py-2">
+        <div class="flex items-center gap-3">
+            <!-- Back Button -->
+            <a href="{{ url_for('dashboard') }}" class="p-1.5 hover:bg-syna-gray rounded-full transition-colors">
+                <svg class="w-5 h-5 text-syna-light hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <h1 class="flex-1 text-white font-montserrat text-lg">Send Feedback</h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 px-4 py-6 pb-20">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="mb-4 p-4 rounded-lg {% if category == 'error' %}bg-red-500{% else %}bg-green-500{% endif %} text-white">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Feedback Form -->
+        <form method="POST" action="{{ url_for('feedback') }}" class="bg-syna-gray rounded-xl p-6">
+            <!-- Auto-filled Info -->
+            <div class="space-y-1 mb-6">
+                <p class="text-syna-light text-sm">
+                    From: <span class="text-white">{{ username }}</span>
+                </p>
+                <p class="text-syna-light text-sm">
+                    Date: <span class="text-white">{{ current_date }}</span>
+                </p>
+            </div>
+
+            <!-- Feedback Type Selection -->
+            <div class="mb-6">
+                <label class="block text-sm text-syna-light mb-2">Feedback Type</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <input type="hidden" name="type" id="feedbackType" value="suggestion">
+                    <button type="button" 
+                            onclick="setFeedbackType('suggestion', this)" 
+                            class="bg-syna-accent text-white py-2 px-4 rounded-lg text-sm font-poppins">
+                        Suggestion
+                    </button>
+                    <button type="button" 
+                            onclick="setFeedbackType('bug', this)" 
+                            class="bg-syna-medium text-syna-light py-2 px-4 rounded-lg text-sm font-poppins">
+                        Bug Report
+                    </button>
+                </div>
+            </div>
+
+            <!-- Category Selection -->
+            <div class="mb-6">
+                <label class="block text-sm text-syna-light mb-2">Category</label>
+                <select name="category" required 
+                        class="w-full bg-syna-dark text-white px-4 py-2 rounded-lg font-poppins text-sm focus:outline-none focus:ring-1 focus:ring-syna-accent">
+                    <option value="">Select a category</option>
+                    <option value="matching">Matching System</option>
+                    <option value="ui">User Interface</option>
+                    <option value="spotify">Spotify Integration</option>
+                    <option value="profile">Profile & Settings</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- Message Input -->
+            <div class="mb-6">
+                <label class="block text-sm text-syna-light mb-2">Your Message</label>
+                <textarea 
+                    name="message"
+                    rows="5" 
+                    placeholder="Describe your suggestion or issue..." 
+                    required
+                    maxlength="1000"
+                    class="w-full bg-syna-dark text-white px-4 py-3 rounded-lg font-poppins text-sm focus:outline-none focus:ring-1 focus:ring-syna-accent resize-none"
+                ></textarea>
+                <p class="text-syna-light text-xs mt-2">
+                    Please be as detailed as possible to help us understand your feedback better.
+                </p>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" 
+                    class="w-full bg-syna-accent hover:bg-opacity-90 active:bg-opacity-80 text-white font-poppins font-semibold py-3 px-6 rounded-full transition duration-300 shadow-lg">
+                Send Feedback
+            </button>
+        </form>
+    </div>
+
+    <script>
+        function setFeedbackType(type, button) {
+            document.getElementById('feedbackType').value = type;
+            // Reset all buttons
+            document.querySelectorAll('button[type="button"]').forEach(btn => {
+                btn.className = 'bg-syna-medium text-syna-light py-2 px-4 rounded-lg text-sm font-poppins';
+            });
+            // Highlight selected button
+            button.className = 'bg-syna-accent text-white py-2 px-4 rounded-lg text-sm font-poppins';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon Links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='assets/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='assets/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='assets/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='assets/site.webmanifest') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Terms of Service - Syna</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'syna': {
+                            'accent': '#1d419d',    
+                            'dark': '#121212',      
+                            'gray': '#212121',      
+                            'medium': '#535353',    
+                            'light': '#b3b3b3'      
+                        }
+                    },
+                },
+                fontFamily: {
+                    'montserrat': ['Montserrat', 'sans-serif'],
+                    'poppins': ['Poppins', 'sans-serif'],
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-syna-dark min-h-screen flex flex-col">
+    <!-- Top Navigation -->
+    <div class="sticky top-0 bg-syna-dark z-10 shadow-lg px-4 py-2">
+        <div class="flex items-center gap-3">
+            <a href="{{ url_for('settings') }}" class="p-1.5 hover:bg-syna-gray rounded-full transition-colors">
+                <svg class="w-5 h-5 text-syna-light hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <h1 class="flex-1 text-white font-montserrat text-lg">Terms of Service</h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 px-4 py-6 pb-20">
+        <div class="max-w-2xl mx-auto space-y-6">
+            <!-- Header -->
+            <div class="bg-syna-gray rounded-xl p-6">
+                <h2 class="text-xl font-montserrat text-white mb-2">Terms of Service</h2>
+                <p class="text-syna-light text-sm">Last updated: 2025-04-15</p>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="space-y-6">
+                <!-- Introduction -->
+                <div class="bg-syna-gray rounded-xl p-6">
+                    <h3 class="text-lg font-montserrat text-white mb-3">1. Acceptance of Terms</h3>
+                    <p class="text-syna-light text-sm leading-relaxed">
+                        By accessing or using Syna, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access the service.
+                    </p>
+                </div>
+
+                <!-- User Responsibilities -->
+                <div class="bg-syna-gray rounded-xl p-6">
+                    <h3 class="text-lg font-montserrat text-white mb-3">2. User Responsibilities</h3>
+                    <ul class="text-syna-light text-sm space-y-2">
+                        <li>• Provide accurate and complete information</li>
+                        <li>• Maintain the security of your account</li>
+                        <li>• Respect other users' privacy</li>
+                        <li>• Comply with all applicable laws</li>
+                    </ul>
+                </div>
+
+                <!-- Service Usage -->
+                <div class="bg-syna-gray rounded-xl p-6">
+                    <h3 class="text-lg font-montserrat text-white mb-3">3. Service Usage</h3>
+                    <p class="text-syna-light text-sm leading-relaxed">
+                        Syna provides a platform for music-based social connections. We reserve the right to modify or discontinue the service at any time.
+                    </p>
+                </div>
+
+                <!-- Termination -->
+                <div class="bg-syna-gray rounded-xl p-6">
+                    <h3 class="text-lg font-montserrat text-white mb-3">4. Account Termination</h3>
+                    <p class="text-syna-light text-sm leading-relaxed">
+                        We may terminate or suspend your account at any time for any reason, including violation of these terms.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+# Environment variables
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+
+# Database
+*.db
+*.sqlite
+
+# Logs
+*.log
+feedback.txt
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+readme.txt
+
+
+# MacOS
+.DS_Store
+
+# Backup files
+*~
+
+# Flask-specific
+instance/
+*.pid
+
+# Testing
+coverage/
+htmlcov/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+
+# Deployment
+build/
+dist/
+*.egg-info/
